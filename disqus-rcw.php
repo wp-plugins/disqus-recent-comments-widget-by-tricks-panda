@@ -1,5 +1,6 @@
 <?php
-/* Plugin Name: Disqus Recent Comments Widget By Tricks Panda
+/*
+Plugin Name: Recent Comments Widget For Disqus
 Plugin URI: http://www.trickspanda.com
 Description: Add a Disqus recent comments widget to your WordPress blog's sidebar
 Version: 1.0
