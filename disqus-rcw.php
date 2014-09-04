@@ -3,7 +3,7 @@
 Plugin Name: Recent Comments Widget For Disqus
 Plugin URI: http://www.trickspanda.com
 Description: Add a Disqus recent comments widget to your WordPress blog's sidebar
-Version: 1.1
+Version: 1.2
 Author: Hardeep Asrani
 Author URI: http://www.hardeepasrani.com
 */
@@ -24,8 +24,8 @@ class tp_disqusrecentcomments extends WP_Widget
     {
         $instance = wp_parse_args((array) $instance);
         
-        if ($instance['commentnumbers'] == "") {
-            $instance['commentnumbers'] = "5";
+        if(!isset($instance['commentnumbers']) || empty($instance['commentnumbers'])) { 
+            $instance['commentnumbers'] = "5"; 
         }
 ?>
 
@@ -41,7 +41,7 @@ Title:
 name="<?php
         echo $this->get_field_name('title');
 ?>" type="text" value="<?php
-        echo $instance['title'];
+        if(isset($instance['title'])){ echo $instance['title']; }
 ?>" />
 </label>
 <br/>
@@ -56,7 +56,7 @@ Disqus Site ID:
 name="<?php
         echo $this->get_field_name('siteid');
 ?>" type="text" value="<?php
-        echo $instance['siteid'];
+        if(isset($instance['siteid'])){ echo $instance['siteid']; }
 ?>" />
 </label>
 <br/>
@@ -88,8 +88,7 @@ Hide Avatars:
 name="<?php
         echo $this->get_field_name('hideavataroption');
 ?>" type="checkbox" value="1" <?php
-        if (1 == $instance['hideavataroption'])
-            echo 'checked="checked"';
+        if(isset($instance['hideavataroption'])){ if (1 == $instance['hideavataroption']) echo 'checked="checked"'; }
 ?> />
 </label>
 <br/>
@@ -106,8 +105,7 @@ Hide Moderators:
 name="<?php
         echo $this->get_field_name('hidemodsoption');
 ?>" type="checkbox" value="1" <?php
-        if (1 == $instance['hidemodsoption'])
-            echo 'checked="checked"';
+        if(isset($instance['hidemodsoption'])){ if (1 == $instance['hidemodsoption']) echo 'checked="checked"'; }
 ?> />
 </label>
 </p>
